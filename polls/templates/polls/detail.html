@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}투표 상세보기{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1 class="card-header">
+        <a href="{% url 'polls:index' %}"><i class="fas fa-arrow-left"></i></a>
+        {{ question.question_text }}
+    </h1>
+    <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">{{ question.question_text }}에 투표해주세요.</h6>
+
+        {% if error_message %}
+        <p class="alert alert-danger" role="alert">{{ error_message }}</p>
+        {% endif %}
+
+        <form action="{% url 'polls:vote' question.id %}" method="post">
+            <!-- polls라는 이름의 앱의 vote view로 action -->
+            <!-- post - 서버로 보냄, get - 서버에서 가져옴 -->
+            {% csrf_token %}  <!-- 사이트 간 요청 위조 방지(해킹) -->
+            {% for choice in question.choice_set.all %}
+            <!-- 부모.자식_set: quesion.choice_set, 모델의 다수 객체에 접근하는 orm 기법 -->
+            <input type="radio"
+                   name="choice"
+                   id="choice{{ forloop.counter }}"
+                   value="{{ choice.id }}">
+            {# 템플릿 변수, for가 돌면서 counter 변수가 생김 #}
+            <label for="choice{{ forloop.counter }}">
+                {{ choice.choice_text }}
+            </label></br>
+            {% endfor %}
+            <input type="submit" value="투표하기" class="btn btn-primary">
+        </form>
+        <!--<ul>-->
+        <!--{% for choice in question.choice_set.all %}
+        choice_set().all로 쓰면 안됨(코드가 실행될 때 콜할거임, 이렇게 하면 바로 콜 됨)-->
+        <!--<li>{{ choice.choice_text }}</li>-->
+        <!--{% endfor %}-->
+        <!--</ul>-->
+    </div>
+</div>
+{% endblock %}
