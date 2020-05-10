@@ -4,15 +4,15 @@
 
 {% block content %}
 <div class="card">
-    <h1 class="card-header">
+    <h1 id="jua" class="card-header">
         <a href="{% url 'polls:index' %}"><i class="fas fa-arrow-left"></i></a>
         {{ question.question_text }}
     </h1>
     <div class="card-body">
-        <h6 class="card-subtitle mb-2 text-muted">{{ question.question_text }}에 투표해주세요.</h6>
+        <h6 id="nanum" class="card-subtitle mb-2 text-muted">{{ question.question_text }}에 투표해주세요.</h6>
 
         {% if error_message %}
-        <p class="alert alert-danger" role="alert">{{ error_message }}</p>
+        <p id="nanum" class="alert alert-danger" role="alert">{{ error_message }}</p>
         {% endif %}
 
         <form action="{% url 'polls:vote' question.id %}" method="post">
@@ -26,11 +26,11 @@
                    id="choice{{ forloop.counter }}"
                    value="{{ choice.id }}">
             {# 템플릿 변수, for가 돌면서 counter 변수가 생김 #}
-            <label for="choice{{ forloop.counter }}">
+            <label id="jua" for="choice{{ forloop.counter }}">
                 {{ choice.choice_text }}
             </label></br>
             {% endfor %}
-            <input type="submit" value="투표하기" class="btn btn-primary">
+            <input id="jua" type="submit" value="투표하기" class="btn btn-primary">
         </form>
         <!--<ul>-->
         <!--{% for choice in question.choice_set.all %}

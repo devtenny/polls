@@ -5,21 +5,21 @@
 {% block content %}
 {% if latest_question_list %}  <!--장고 템플릿 언어-->
 <div class="card">
-    <h1 class="card-header">진행 중인 투표 목록</h1>
+    <h1 id="jua" class="card-header">진행 중인 투표 목록</h1>
     <div class="card-body">
         <ul class="list-group list-group-flush">
             {% for question in latest_question_list %}
             <li class="list-group-item">
                 {#<a href="/polls/{{ question.id }}"> 하드 코딩 방식은 지양할 것#}
                 {#<a href="{% url 'detail' question.id %}"> 함수임에도 ()를 생략#}
-                    <a href="{% url 'polls:detail' question.id %}"> {#polls앱의 detail뷰라고 지정(콜론이용)#}
+                    <a id="nanum" href="{% url 'polls:detail' question.id %}"> {#polls앱의 detail뷰라고 지정(콜론이용)#}
                         {{ question.question_text }}
                     </a>
             </li>
             {% endfor %}
         </ul>
         {% else %}
-        <p>진행 중인 투표가 없어요.</p>
+        <p id="gaegu">진행 중인 투표가 없어요.</p>
         {% endif %}
     </div>
 </div>

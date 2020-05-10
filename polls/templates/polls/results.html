@@ -4,21 +4,21 @@
 
 {% block content %}
 <div class="card">
-    <h1 class="card-header">
+    <h1 id="jua" class="card-header">
         <a href="{% url 'polls:index' %}" class="arraw"><i class="fas fa-arrow-left"></i></a>
         {{ question.question_text }}
     </h1>
     <div class="card-body">
-        <h6 class="card-subtitle mb-2 text-muted">{{ question.question_text }}에 대한 투표 결과입니다.</h6>
+        <h6 id="nanum" class="card-subtitle mb-2 text-muted">{{ question.question_text }}에 대한 투표 결과입니다.</h6>
         <ul>
             {% for choice in question.choice_set.all %}
-            <li>
-                {{ choice.choice_text }} -- {{ choice.votes }}표{#{{ choice.votes|pluralize }} 영어에서 복수형일 경우 s를 붙여줌#}
+            <li id="nanum">
+                <span id="jua">{{ choice.choice_text }}</span> -- {{ choice.votes }}표{#{{ choice.votes|pluralize }} 영어에서 복수형일 경우 s를 붙여줌#}
             </li>
             {% endfor %}
         </ul>
 
-        <a href="{% url 'polls:detail' question.id %}">다시 투표하시겠습니까?</a>
+        <a id="nanum" href="{% url 'polls:detail' question.id %}">다시 투표하시겠습니까?</a>
     </div>
 </div>
 {% endblock %}

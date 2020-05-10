@@ -1,18 +1,29 @@
 /*polls/static/polls/style.css*/
+
+/*font-family: 'Jua', sans-serif;*/
+/*font-family: 'Gaegu', cursive;*/
+/*font-family: 'Nanum Gothic', sans-serif;*/
+
 body {
-    background: white url("images/polls.png") no-repeat;
-    background-attachment: fixed;
-    background-position: right bottom;
-    background-size: 100%;
+    background: url("images/pollsicon.png") repeat fixed right bottom;
+    background-size: 30%;
 }
 
 li a {
     text-decoration: none;
     color: black;
     text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .navbar {
     margin-top: 300px;
+}
+
+#jua {
+    font-family: 'Jua', sans-serif;
+}
+
+#nanum {
+    font-family: 'Nanum Gothic', sans-serif;
 }
